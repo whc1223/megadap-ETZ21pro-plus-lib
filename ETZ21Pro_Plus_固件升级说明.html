@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ETZ21 Pro Plus 固件升级说明</title>
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --text: #1f2329;
+      --muted: #646a73;
+      --border: #e5e8ef;
+      --accent: #eab308;
+      --accent-dark: #b45309;
+      --primary: #111827;
+      --tag-bg: #f1f5f9;
+      --notice-bg: #fffbeb;
+      --notice-border: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Microsoft YaHei", "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 36px 20px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #111827 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 34px 40px 30px;
+      border-bottom: 4px solid var(--accent);
+    }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      color: #111827;
+      background: var(--accent);
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .header h1 { font-size: 26px; font-weight: 700; letter-spacing: 0.3px; margin-bottom: 8px; }
+    .header .meta { font-size: 13.5px; color: #cbd5e1; }
+    .content { padding: 34px 40px 38px; }
+    .section { margin-bottom: 26px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+    .section:last-of-type { border-bottom: none; margin-bottom: 10px; padding-bottom: 10px; }
+    .section-title {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 17.5px; font-weight: 700; color: var(--primary); margin-bottom: 12px;
+    }
+    .section-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 26px; height: 26px; border-radius: 7px;
+      background: var(--primary); color: var(--accent);
+      font-size: 13.5px; font-weight: 700; flex-shrink: 0;
+    }
+    ul.feature-list { list-style: none; padding-left: 36px; }
+    ul.feature-list li {
+      position: relative; font-size: 14.8px; color: #334155;
+      margin-bottom: 8px; padding-left: 16px;
+    }
+    ul.feature-list li::before {
+      content: ""; position: absolute; left: 0; top: 10px;
+      width: 6px; height: 6px; border-radius: 50%; background: #94a3b8;
+    }
+    .lens-table-wrap {
+      margin: 14px 0 6px 36px; border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+    }
+    table.lens-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    table.lens-table th {
+      background: var(--tag-bg); color: var(--primary); font-weight: 600;
+      text-align: left; padding: 10px 16px; border-bottom: 1px solid var(--border);
+    }
+    table.lens-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); color: #334155; }
+    table.lens-table tr:last-child td { border-bottom: none; }
+    code {
+      font-family: Consolas, "SFMono-Regular", Menlo, monospace;
+      font-size: 13.5px; background: #f1f5f9; color: #0f172a;
+      padding: 1px 6px; border-radius: 4px;
+    }
+    .notice-box {
+      margin-top: 24px; background: var(--notice-bg);
+      border: 1px solid #fde68a; border-left: 5px solid var(--notice-border);
+      border-radius: 10px; padding: 18px 22px;
+    }
+    .notice-title { font-size: 15.5px; font-weight: 700; color: var(--accent-dark); margin-bottom: 6px; }
+    .notice-box p { font-size: 14.5px; color: #78350f; line-height: 1.7; }
+    .footer {
+      background: #f8fafc; border-top: 1px solid var(--border);
+      padding: 16px 40px; font-size: 12.5px; color: var(--muted); text-align: center;
+    }
+    @media print {
+      body { background: #ffffff; padding: 0; }
+      .container { box-shadow: none; border: none; }
+    }
+    @media (max-width: 640px) {
+      .header, .content { padding: 24px 20px; }
+      ul.feature-list, .lens-table-wrap { padding-left: 0; margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="badge">FIRMWARE RELEASE NOTES</div>
+      <h1>ETZ21 Pro Plus 固件升级说明</h1>
+      <div class="meta">固件版本：V2.08 &nbsp;|&nbsp; 发布日期：2026-11-24</div>
+    </div>
+
+    <div class="content">
+      <div class="section">
+        <div class="section-title">
+          <span class="section-num">1</span>
+          <span>新增五轴协同防抖支持与新一代机身防抖兼容优化</span>
+        </div>
+        <ul class="feature-list">
+          <li>适配带光学防抖的索尼 E 卡口原厂及副厂镜头（OSS / VC / OS / OIS）：自动由镜头负责 Pitch / Yaw 光学防抖、尼康机身负责 X / Y / Roll 传感器防抖，显著提升中长焦手持防抖效能与取景画面稳定性。</li>
+          <li>支持尼康机身菜单 <strong>防抖开 / 关 / Sport 运动模式</strong> 与镜头实体防抖开关双向实时同步，修复在尼康 <code>Z9 / Z8 / Zf / Z6III / Z50II</code> 等新一代机身上关闭菜单防抖后镜头光学防抖仍常开的问题。</li>
+          <li>优化近摄与微距场景下的平移防抖补偿精度，支持待机及关机时防抖镜组自动归中锁止保护。</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <span class="section-num">2</span>
+          <span>暗光合焦表现、对焦精度与老款/电动变焦镜头兼容性升级</span>
+        </div>
+        <ul class="feature-list">
+          <li><strong>改善暗光环境合焦表现</strong>：优化弱光及低反差场景下的反差微摆扫描与微步驱动控制，结合精准出瞳与渐晕通光口径参数传递，减少暗光环境拉风箱，显著提升弱光下的合焦速度与成功率。</li>
+          <li>新增收光圈焦点偏移（球差）与全画幅边缘相位对焦补偿：支持自动读取并缓存索尼镜头内置光学瞳距与像差数据（同时内置 <strong>57 款</strong>早期索尼镜头光学参数库），大幅提升大光圈镜头收缩光圈实拍及边缘对焦点的合焦准度。</li>
+          <li>修复索尼 <code>E 18-55mm F3.5-5.6 OSS</code>、<code>E PZ 16-50mm F3.5-5.6 OSS</code> 等早期原厂镜头的对焦微颤与拉风箱问题，还原经典老镜头专属对焦灵敏度曲线。</li>
+          <li>修复 <code>E PZ 16-50mm</code> 等电动变焦镜头上电或变焦后偶发卡死、无法对焦的问题。</li>
+          <li>重构尼康对焦段步差算法，补齐尼康全套两段式消隙定位、微摆追焦与平滑制动指令，修复副厂大光圈镜头拉风箱及视频追焦、微距慢速微步下的偶发顿挫与暴冲。</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <span class="section-num">3</span>
+          <span>光圈显示与控制精准校准</span>
+        </div>
+        <ul class="feature-list">
+          <li>修复部分 <code>F1.2</code>、<code>F1.8</code> 等镜头在尼康机身上最大光圈显示偏差 <code>0.1</code> 档（如显示为 <code>F1.1</code>、<code>F1.3</code>、<code>F1.9</code>）的问题，确保机身光圈刻度、实体光圈环全开档与照片 EXIF 记录严格一致。</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <span class="section-num">4</span>
+          <span>机内光学矫正（畸变 / 暗角 / 色差）与取景体验优化</span>
+        </div>
+        <ul class="feature-list">
+          <li>修复变焦镜头在变焦过程中机内暗角、畸变与色差矫正系数未随焦距实时同步的问题。</li>
+          <li>修复中长焦镜头（<code>&gt;100mm</code>）在新一代尼康机身（Expeed 7 系列等）上实时取景与成片边缘畸变裁切比例不一致的问题。</li>
+          <li>优化广角及远心镜头出瞳距离解算，改善机身边缘测光、白平衡与相位对焦表现。</li>
+          <li>新增以下 <strong>8 款</strong>镜头的尼康机内原生光学矫正数据支持：</li>
+        </ul>
+
+        <div class="lens-table-wrap">
+          <table class="lens-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">品牌</th>
+                <th style="width: 50%;">支持镜头型号</th>
+                <th style="width: 28%;">支持机内矫正项目</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>索尼 Sony</td>
+                <td><strong>FE 16-35mm F4 ZA OSS</strong> (SEL1635Z)</td>
+                <td>暗角 / 畸变 / 倍率色差</td>
+              </tr>
+              <tr>
+                <td>索尼 Sony</td>
+                <td><strong>FE 50mm F1.2 GM</strong> (SEL50F12GM)</td>
+                <td>暗角 / 畸变 / 倍率色差</td>
+              </tr>
+              <tr>
+                <td>索尼 Sony</td>
+                <td><strong>FE 50mm F1.8</strong> (SEL50F18F)</td>
+                <td>暗角 / 畸变 / 倍率色差</td>
+              </tr>
+              <tr>
+                <td>索尼 Sony</td>
+                <td><strong>FE 85mm F1.4 GM</strong> (SEL85F14GM)</td>
+                <td>暗角 / 畸变 / 倍率色差</td>
+              </tr>
+              <tr>
+                <td>索尼 Sony</td>
+                <td><strong>FE 70-200mm F2.8 GM OSS</strong> (SEL70200GM)</td>
+                <td>暗角 / 畸变 / 倍率色差</td>
+              </tr>
+              <tr>
+                <td>索尼 Sony</td>
+                <td><strong>E 18-200mm F3.5-6.3 OSS</strong> (SEL18200)</td>
+                <td>暗角 / 畸变 / 倍率色差</td>
+              </tr>
+              <tr>
+                <td>腾龙 Tamron</td>
+                <td><strong>28-75mm F/2.8 Di III RXD</strong> (A036)</td>
+                <td>暗角 / 畸变 / 倍率色差</td>
+              </tr>
+              <tr>
+                <td>腾龙 Tamron</td>
+                <td><strong>70-300mm F/4.5-6.3 Di III RXD</strong> (A047)</td>
+                <td>暗角 / 畸变 / 倍率色差 / 白平衡优化</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <span class="section-num">5</span>
+          <span>重新加入待机低功耗模式（保持焦点）、休眠换镜识别与稳定性增强</span>
+        </div>
+        <ul class="feature-list">
+          <li><strong>重新加入待机低功耗模式</strong>：<strong>索尼原生 E 卡口镜头（不包括转接环）和部分腾龙镜头</strong>在相机待机时会进入低功耗休眠模式，<strong>唤醒后会保持休眠前的焦点位置</strong>；其他镜头（及转接环）仍沿用之前的策略，在待机/关机时完全切断电流。</li>
+          <li><strong>新增待机休眠期间拆装/更换镜头自动识别</strong>：低功耗休眠状态下拔下镜头、更换另一支自动镜头，或由手动镜头更换为电子镜头时，休眠中安静记录换镜状态且不误唤醒机身；待下次唤醒机身时自动触发断电重新识别新镜头参数。</li>
+          <li>扩容新一代尼康机身高速通信缓冲区，修复极端快速连拍、频繁拧动变焦/对焦环或热插拔镜头时的潜在异常隐患。</li>
+        </ul>
+      </div>
+
+      <div class="notice-box">
+        <div class="notice-title">【重要使用提示】</div>
+        <p>
+          <strong>首次更换或安装新镜头时</strong>，受机身与镜头上电初始化时序影响，当前镜头的部分识别参数或光学矫正/防抖配置可能尚未在首轮开机的瞬间完成切换。<strong>首次换上新镜头开机识别后，请将相机关机并重新开机一次</strong>，转接环即会自动记忆该镜头配置，后续正常开关机无需重复操作。
+        </p>
+      </div>
+    </div>
+
+    <div class="footer">
+      ETZ21 Pro Plus 固件升级说明
+    </div>
+  </div>
+</body>
+</html>
